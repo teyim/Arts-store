@@ -6,7 +6,6 @@ import { BsCart2 } from 'react-icons/bs'
 import Logo from 'public/assets/logo-cultured-kid.svg'
 
 function Navbar() {
-
 	return (
 		<>
 			<nav className='py-10 px-10 flex justify-between '>

@@ -1,14 +1,14 @@
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        "Vollkorn": ["Vollkorn"]
-      },
-    },
-  },
-  plugins: [],
+	content: [
+		'./pages/**/*.{js,ts,jsx,tsx}',
+		'./components/**/*.{js,ts,jsx,tsx}',
+	],
+	theme: {
+		extend: {
+			fontFamily: {
+				Vollkorn: ['Vollkorn'],
+			},
+		},
+	},
+	plugins: [],
 }

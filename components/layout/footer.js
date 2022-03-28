@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from 'public/assets/logo-cultured-kid.svg'
-
 function Footer() {
-	const a = 8
 	return (
 		<>
 			<footer className='p-4 bg-white sm:p-6 dark:bg-gray-800 font-Vollkorn mt-10 text-lg'>
