@@ -80,14 +80,14 @@ export default function Home() {
 					</Marquee>
 				</div>
 			</div>
-			<div className='px-10 py-10 flex align-middle content-center justify-evenly font-Vollkorn my-14'>
+			<div className='p-5 md:p-10 md:flex align-middle content-center justify-evenly font-Vollkorn md:my-14'>
 				<div>
 					<h3 className='font-extralight text-xl text-gray-600 italic'>
 						On a budget?
 					</h3>
 					<h4 className='text-4xl text-gray-800'>Shop by Price</h4>
 				</div>
-				<div className='w-3/5 flex justify-evenly my-3'>
+				<div className='md:w-3/5 flex justify-evenly my-3'>
 					<button className='py-1 px-4 border border-gray-700 hover:border-2'>
 						Under $500
 					</button>
@@ -102,11 +102,11 @@ export default function Home() {
 					</button>
 				</div>
 			</div>
-			<section className='font-Vollkorn '>
-				<div className='bg-gray-100 px-12 py-4'>
-					<div className='max-w-screen-2xl'>
-						<div className=' relative flex px-16 py-10'>
-							<div className='w-1/2 px-16 py-10 '>
+			<section className='font-Vollkorn'>
+				<div className='bg-gray-100 md:px-12 md:py-4'>
+					<div className='max-w-screen-2xl flex flex-col-reverse'>
+						<div className='p-10 md:relative flex flex-col-reverse md:flex-row md:px-16 md:py-10'>
+							<div className='md:w-1/2 md:px-16 md:py-10 '>
 								<h3 className='font-extralight text-2xl text-gray-600 italic my-2'>
 									Whats your Arts style?
 								</h3>
@@ -120,7 +120,7 @@ export default function Home() {
 									</button>
 								</div>
 							</div>
-							<div className="absolute flex justify-center -top-16 right-0 bg-[url('https://www.riseart.com/fe/static/media/media-bkg.de53d520.png')] w-1/2 bg-no-repeat h-[500px] bg-contain bg-center">
+							<div className="md:absolute flex justify-center md:-top-16 md:right-0 bg-[url('https://www.riseart.com/fe/static/media/media-bkg.de53d520.png')] md:w-1/2 bg-no-repeat md:h-[500px] bg-contain bg-center">
 								<div className='w-[450px] h-[450px]  relative my-10'>
 									<Image
 										src={Drawing}

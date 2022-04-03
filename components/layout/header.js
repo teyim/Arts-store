@@ -60,7 +60,7 @@ function Header() {
 		<>
 			<header className='font-Vollkorn'>
 				<div className='py-6 flex justify-between mt-5 px-10'>
-					<div className='w-3/5 text-center text-5xl font-thin'>
+					<div className='md:w-3/5 text-center text-4xl md:text-5xl font-thin'>
 						<h2>Featured Paintings</h2>
 					</div>
 					<div className='flex justify-end '>

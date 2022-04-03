@@ -91,7 +91,7 @@ function Footer() {
 					<span className=' text-gray-500 sm:text-center dark:text-gray-400'>
 						© 2022{' '}
 						<a href='https://flowbite.com' className='hover:underline'>
-							Flowbite™
+							Cultured kid
 						</a>
 						. All Rights Reserved.
 					</span>
