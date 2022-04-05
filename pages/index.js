@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Drawing from '../public/assets/drawing.png'
 import Marquee from 'react-fast-marquee'
-import Navbar from 'components/layout/navbar'
+import Navbar from 'components/layout/navbar/navbar'
 import Footer from 'components/layout/footer'
 import Header from 'components/layout/header'
 
