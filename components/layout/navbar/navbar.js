@@ -7,6 +7,7 @@ import {
 	AiOutlineMenu,
 	AiOutlineClose,
 	AiOutlineDown,
+	AiOutlineSearch,
 } from 'react-icons/ai'
 import { BsCart2 } from 'react-icons/bs'
 import Logo from 'public/assets/logo-cultured-kid.svg'
@@ -16,6 +17,7 @@ import ProfileDropdown from './profile-dropdown'
 function Navbar() {
 	const [showPortal, setshowPortal] = useState(false)
 	const [showDropdown, setShowDropdown] = useState(false)
+	const [showSearchbar, setShowSearchbar] = useState(false)
 
 	const mobileMenu = (
 		<div className=' w-screen h-screen bg-black  top-0 right-0 left-0 z-20 p-6 text-white font-Vollkorn flex flex-col content-evenly fixed md:hidden animate-fadein'>
@@ -43,22 +45,45 @@ function Navbar() {
 					</li>
 				</ul>
 			</div>
-			<div className='flex justify-evenly py-3 '>
-				<button>
-					<IoIosSearch className='w-5 h-5' />
-				</button>
-				<button>
-					<BsCart2 className='w-5 h-5' />
-				</button>
-				<button
-					className='flex '
-					onClick={() => setShowDropdown(!showDropdown)}
-				>
-					<AiOutlineUser className='w-5 h-5 ' />
-					<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
-				</button>
-			</div>
+			{!showSearchbar && (
+				<div className='flex justify-evenly py-3 '>
+					<button onClick={() => setShowSearchbar(true)}>
+						<IoIosSearch className='w-5 h-5' />
+					</button>
+					<Link passHref href='/cart'>
+						<a>
+							<BsCart2 className='w-5 h-5' />
+						</a>
+					</Link>
+					<button
+						className='flex '
+						onClick={() => setShowDropdown(!showDropdown)}
+					>
+						<AiOutlineUser className='w-5 h-5 ' />
+						<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
+					</button>
+				</div>
+			)}
+
 			{showDropdown && <ProfileDropdown />}
+			{showSearchbar && (
+				<div className='px-4 py-2 border border-white shadow-sm flex align-baseline justify-between animate-fade-in-down  mx-auto'>
+					<button
+						className='p-1 my-auto'
+						onClick={() => setShowSearchbar(false)}
+					>
+						<AiOutlineClose className='w-5 h-5 text-stone-500' />
+					</button>
+					<input
+						type='text'
+						placeholder='Enter art name'
+						className='py-2 px-2 outline-none bg-black'
+					/>
+					<button className='p-1 my-auto'>
+						<AiOutlineSearch className='w-5 h-5 text-stone-500' />
+					</button>
+				</div>
+			)}
 		</div>
 	)
 	return (
@@ -87,38 +112,62 @@ function Navbar() {
 							Artists
 						</Link>
 					</div>
-					<div className='hidden md:flex w-1/5  my-auto  py-3 '>
-						<ul className='w-full md:flex  justify-evenly py-1'>
-							<li>
-								<button>
-									<IoIosSearch className='w-5 h-5' />
+					{!showSearchbar && (
+						<>
+							<div className='hidden md:flex w-1/5  my-auto  py-3 '>
+								<ul className='w-full md:flex  justify-evenly py-1'>
+									<li>
+										<button onClick={() => setShowSearchbar(true)}>
+											<IoIosSearch className='w-5 h-5' />
+										</button>
+									</li>
+									<li>
+										<Link passHref href='/cart'>
+											<a>
+												<BsCart2 className='w-5 h-5' />
+											</a>
+										</Link>
+									</li>
+									<li
+										onMouseEnter={() => setShowDropdown(true)}
+										onMouseLeave={() => setShowDropdown(false)}
+									>
+										<button className='flex relative'>
+											<AiOutlineUser className='w-5 h-5 ' />
+											<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
+										</button>
+										{showDropdown && <ProfileDropdown />}
+									</li>
+								</ul>
+							</div>
+							<div className='md:hidden flex items-center'>
+								<button
+									className='outline-hidden mobile-menu-button'
+									onClick={() => setshowPortal(!showPortal)}
+								>
+									<AiOutlineMenu className='h-6 w-6' />
 								</button>
-							</li>
-							<li>
-								<button>
-									<BsCart2 className='w-5 h-5' />
-								</button>
-							</li>
-							<li
-								onMouseEnter={() => setShowDropdown(true)}
-								onMouseLeave={() => setShowDropdown(false)}
+							</div>
+						</>
+					)}
+					{showSearchbar && (
+						<div className='hidden  px-2 py-2 border border-stone-600 shadow-sm md:flex align-baseline animate-fade-in-down '>
+							<button
+								className='p-1 my-auto'
+								onClick={() => setShowSearchbar(false)}
 							>
-								<button className='flex relative'>
-									<AiOutlineUser className='w-5 h-5 ' />
-									<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
-								</button>
-								{showDropdown && <ProfileDropdown />}
-							</li>
-						</ul>
-					</div>
-					<div className='md:hidden flex items-center'>
-						<button
-							className='outline-hidden mobile-menu-button'
-							onClick={() => setshowPortal(!showPortal)}
-						>
-							<AiOutlineMenu className='h-6 w-6' />
-						</button>
-					</div>
+								<AiOutlineClose className='w-5 h-5 text-stone-500' />
+							</button>
+							<input
+								type='text'
+								placeholder='Enter art name'
+								className='p-2 outline-none '
+							/>
+							<button className='p-1 my-auto'>
+								<AiOutlineSearch className='w-5 h-5 text-stone-500' />
+							</button>
+						</div>
+					)}
 				</div>
 			</nav>
 		</>
