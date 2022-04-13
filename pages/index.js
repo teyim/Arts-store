@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Drawing from '../public/assets/drawing.png'
 import Marquee from 'react-fast-marquee'
-import Navbar from 'components/layout/navbar/navbar'
-import Footer from 'components/layout/footer'
 import Header from 'components/layout/header'
+import Button from 'components/ui/button'
 
 export default function Home() {
 	const artists = [
@@ -45,7 +44,6 @@ export default function Home() {
 	]
 	return (
 		<>
-			<Navbar />
 			<Header />
 			<div className=' py-10 font-Vollkorn bg-gray-100 '>
 				<div className='w-2/5 p-3 px-10  text-center'>
@@ -88,18 +86,10 @@ export default function Home() {
 					<h4 className='text-4xl text-gray-800'>Shop by Price</h4>
 				</div>
 				<div className='md:w-3/5 flex justify-evenly my-3'>
-					<button className='py-1 px-4 border border-gray-700 hover:border-2'>
-						Under $500
-					</button>
-					<button className='py-1 px-4 border border-gray-700 hover:border-2'>
-						$500 - $1000
-					</button>
-					<button className='py-1 px-4 border border-gray-700 hover:border-2'>
-						$1000 - $2000
-					</button>
-					<button className='py-1 px-4 border border-gray-700 hover:border-2'>
-						Above $2000
-					</button>
+					<Button>Under $500</Button>
+					<Button>$500 - $1000</Button>
+					<Button>$1000 - $2000</Button>
+					<Button>Above $2000</Button>
 				</div>
 			</div>
 			<section className='font-Vollkorn'>
@@ -114,10 +104,8 @@ export default function Home() {
 									We have a good collection of paintings,drawings and sculptures
 									for you
 								</h4>
-								<div className=' my-6'>
-									<button className='py-3 px-6 border border-gray-700 '>
-										Shop now
-									</button>
+								<div className='my-6'>
+									<Button>Shop now</Button>
 								</div>
 							</div>
 							<div className="md:absolute flex justify-center md:-top-16 md:right-0 bg-[url('https://www.riseart.com/fe/static/media/media-bkg.de53d520.png')] md:w-1/2 bg-no-repeat md:h-[500px] bg-contain bg-center">
@@ -136,7 +124,6 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<Footer />
 		</>
 	)
 }
