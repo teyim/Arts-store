@@ -3,7 +3,7 @@ import Footer from 'components/layout/footer'
 
 function Layout(props) {
 	return (
-		<div className='flex flex-col justify-between h-screen font-Vollkorn text-slate-800'>
+		<div className='flex flex-col justify-between h-screen font-Vollkorn text-slate-800 box-border'>
 			<Navbar />
 			{props.children}
 			<Footer />
