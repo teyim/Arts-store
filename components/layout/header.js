@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { BsArrowRight, BsCart2 } from 'react-icons/bs'
 import { IoShareOutline } from 'react-icons/io5'
 import Marquee from 'react-fast-marquee'
+import Link from 'next/link'
 
 function Header() {
 	const paintings = [
@@ -74,43 +75,47 @@ function Header() {
 								className='my-6 flex justify-evenly hover:shadow-xl hover:border hover:border-black'
 								key={painting.name}
 							>
-								<div className=' px-2 py-2 mx-3 '>
-									<div className='w-[300px] h-[300px] relative my-auto '>
-										<Image
-											src={painting.imageUrl}
-											alt='painting'
-											className='drop-shadow-lg'
-											layout='fill'
-											objectFit='contain'
-										/>
-									</div>
-									<div className='my-3'>
-										<h3 className='font-bold text-lg '>{painting.name}</h3>
-										<h4 className='font-semibold text-gray-800'>
-											{painting.artist}
-										</h4>
-										<h5 className='font-medium text-gray-600 italic'>
-											{painting.type}, {painting.year}
-										</h5>
-										<h5 className='font-extralight text-gray-600 italic'>
-											{painting.dimensions}
-										</h5>
-									</div>
-									<div className='p-2 justify-between flex'>
-										<div className='my-auto'>
-											<h3 className='font-bold text-gray-600 my-auto '></h3>
-											{painting.price}
+								<Link href='/arts/1' passHref>
+									<a>
+										<div className=' px-2 py-2 mx-3 '>
+											<div className='w-[300px] h-[300px] relative my-auto '>
+												<Image
+													src={painting.imageUrl}
+													alt='painting'
+													className='drop-shadow-lg'
+													layout='fill'
+													objectFit='contain'
+												/>
+											</div>
+											<div className='my-3'>
+												<h3 className='font-bold text-lg '>{painting.name}</h3>
+												<h4 className='font-semibold text-gray-800'>
+													{painting.artist}
+												</h4>
+												<h5 className='font-medium text-gray-600 italic'>
+													{painting.type}, {painting.year}
+												</h5>
+												<h5 className='font-extralight text-gray-600 italic'>
+													{painting.dimensions}
+												</h5>
+											</div>
+											<div className='p-2 justify-between flex'>
+												<div className='my-auto'>
+													<h3 className='font-bold text-gray-600 my-auto '></h3>
+													{painting.price}
+												</div>
+												<div className='my-auto flex w-1/4 justify-between'>
+													<button className='p-1 bg-gray-200  w-7 h-7'>
+														<IoShareOutline className='w-5 h-5 text-black  my-auto' />
+													</button>
+													<button className='p-1 bg-black  w-7 h-7'>
+														<BsCart2 className='w-5 h-5 text-white my-auto' />
+													</button>
+												</div>
+											</div>
 										</div>
-										<div className='my-auto flex w-1/4 justify-between'>
-											<button className='p-1 bg-gray-200  w-7 h-7'>
-												<IoShareOutline className='w-5 h-5 text-black  my-auto' />
-											</button>
-											<button className='p-1 bg-black  w-7 h-7'>
-												<BsCart2 className='w-5 h-5 text-white my-auto' />
-											</button>
-										</div>
-									</div>
-								</div>
+									</a>
+								</Link>
 							</div>
 						))}
 					</Marquee>
