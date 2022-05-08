@@ -1,11 +1,14 @@
 import '../styles/globals.css'
 import Layout from 'HOC/layout'
+import { ModalProvider } from 'helpers/context/modal-context'
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<Layout>
-			<Component {...pageProps} />
-		</Layout>
+		<ModalProvider>
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
+		</ModalProvider>
 	)
 }
 
