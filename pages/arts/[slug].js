@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import { useContext } from 'react'
-import { AiOutlineEye } from 'react-icons/ai'
 import { FiShare } from 'react-icons/fi'
 import { BsArrowLeftShort } from 'react-icons/bs'
 import Button from 'components/ui/button'
 import Link from 'next/link'
 import { ModalContext } from 'helpers/context/modal-context'
 import ArtsPreview from 'components/layout/arts-preview'
+import roomMockup1 from 'public/assets/rooms/room1.png'
+import roomMockup2 from 'public/assets/rooms/room2.jpg'
+import roomMockup3 from 'public/assets/rooms/room3.jpg'
 
 function SingleArt() {
 	const { handleModal } = useContext(ModalContext)
@@ -16,12 +18,16 @@ function SingleArt() {
 				<div className='px-12 py-12 bg-gray-100 md:w-1/2 md:flex justify-center'>
 					<div className='my-auto flex md:flex-col justify-evenly items-center py-4 px-1 md:mr-10  md:w-[100px] md:h-[300px]'>
 						<button
-							className='p-1 drop-shadow-md hover:border-2 border-black'
-							onClick={() => handleModal(<ArtsPreview />)}
+							className='p-1 shadow-lg hover:border-2 border-black'
+							onClick={() =>
+								handleModal(
+									<ArtsPreview roomMockup={roomMockup1} wideMockupView />
+								)
+							}
 						>
 							<div className='w-[50px] h-[50px] relative my-auto'>
 								<Image
-									src='http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014'
+									src={roomMockup1}
 									alt='painting'
 									layout='fill'
 									objectFit='cover'
@@ -29,12 +35,14 @@ function SingleArt() {
 							</div>
 						</button>
 						<button
-							className='p-1 drop-shadow-md hover:border-2 border-black'
-							onClick={() => handleModal(<ArtsPreview />)}
+							className='p-1 shadow-lg hover:border-2 border-black'
+							onClick={() =>
+								handleModal(<ArtsPreview roomMockup={roomMockup2} />)
+							}
 						>
 							<div className='w-[50px] h-[50px] relative my-auto'>
 								<Image
-									src='http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014'
+									src={roomMockup2}
 									alt='painting'
 									layout='fill'
 									objectFit='cover'
@@ -42,12 +50,14 @@ function SingleArt() {
 							</div>
 						</button>
 						<button
-							className='p-1 drop-shadow-md hover:border-2 border-black'
-							onClick={() => handleModal(<ArtsPreview />)}
+							className='p-1 shadow-lg hover:border-2 border-black'
+							onClick={() =>
+								handleModal(<ArtsPreview roomMockup={roomMockup3} />)
+							}
 						>
 							<div className='w-[50px] h-[50px] relative my-auto'>
 								<Image
-									src='http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014'
+									src={roomMockup3}
 									alt='painting'
 									layout='fill'
 									objectFit='cover'
@@ -62,15 +72,11 @@ function SingleArt() {
 									src='http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014'
 									alt='painting'
 									layout='fill'
-									objectFit='cover'
+									objectFit='contain'
 								/>
 							</div>
 						</div>
-						<div className='mt-3 flex justify-evenly'>
-							<button className='flex'>
-								<AiOutlineEye className='w-5 h-5 mx-1' />
-								<h4>View in a room</h4>
-							</button>
+						<div className='mt-3 flex justify-center'>
 							<button className='flex'>
 								<FiShare className='w-4 h-5 mx-1' />
 								<h4>Share</h4>
