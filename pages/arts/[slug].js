@@ -14,7 +14,7 @@ function SingleArt() {
 	const { handleModal } = useContext(ModalContext)
 	return (
 		<>
-			<div className='md:flex font-Vollkorn'>
+			<div className='md:flex font-Vollkorn '>
 				<div className='px-12 py-12 bg-gray-100 md:w-1/2 md:flex justify-center'>
 					<div className='my-auto flex md:flex-col justify-evenly items-center py-4 px-1 md:mr-10  md:w-[100px] md:h-[300px]'>
 						<button
@@ -52,7 +52,9 @@ function SingleArt() {
 						<button
 							className='p-1 shadow-lg hover:border-2 border-black'
 							onClick={() =>
-								handleModal(<ArtsPreview roomMockup={roomMockup3} />)
+								handleModal(
+									<ArtsPreview roomMockup={roomMockup3} closeUpMockupView />
+								)
 							}
 						>
 							<div className='w-[50px] h-[50px] relative my-auto'>
@@ -67,7 +69,7 @@ function SingleArt() {
 					</div>
 					<div className='flex flex-col justify-center content-center '>
 						<div className='p-1 drop-shadow-2xl mx-auto'>
-							<div className='w-[350px] h-[400px] relative my-auto'>
+							<div className='w-[200px] h-[200px] md:w-[350px] md:h-[400px] relative my-auto'>
 								<Image
 									src='http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014'
 									alt='painting'
