@@ -3,8 +3,11 @@ import Drawing from '../public/assets/drawing.png'
 import Marquee from 'react-fast-marquee'
 import Header from 'components/layout/header'
 import Button from 'components/ui/button'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from 'helpers/firebase/clientApp'
 
-export default function Home() {
+export default function Home({ artistList }) {
+	console.log(artistList)
 	const artists = [
 		{
 			name: 'Mike Lambert',
@@ -126,4 +129,13 @@ export default function Home() {
 			</section>
 		</>
 	)
+}
+
+export async function getStaticProps() {
+	const artistCol = collection(db, 'artists')
+	const artistSnapShot = await getDocs(artistCol)
+	const artistList = artistSnapShot.docs.map((doc) => doc.data())
+	return {
+		props: { artistList },
+	}
 }
