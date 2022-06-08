@@ -17,8 +17,8 @@ function Navbar() {
 
 	return (
 		<>
-			<nav className='p-6 font-Vollkorn'>
-				<div className='flex justify-between max-w-screen-2xl p-3'>
+			<nav className='p-6 font-Vollkorn  flex justify-center'>
+				<div className='flex justify-between w-11/12 max-w-screen-2xl p-3 '>
 					<div className='md:w-1/5 my-auto'>
 						<Link passHref href='/'>
 							<a>
