@@ -1,18 +1,19 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { IoIosSearch } from 'react-icons/io'
-import { AiOutlineUser, AiOutlineMenu, AiOutlineDown } from 'react-icons/ai'
+import { AiOutlineMenu } from 'react-icons/ai'
 import { BsCart2 } from 'react-icons/bs'
 import Logo from 'public/assets/logo-cultured-kid.svg'
 import Portal from 'HOC/portal'
-import ProfileDropdown from './profile-dropdown'
 import SearchBar from './searchbar'
 import MobileNav from './mobilenav'
+import { ModalContext } from 'helpers/context/modal-context'
+import AuthPage from '../auth'
 
 function Navbar() {
+	const { handleModal } = useContext(ModalContext)
 	const [showPortal, setshowPortal] = useState(false)
-	const [showDropdown, setShowDropdown] = useState(false)
 	const [showSearchbar, setShowSearchbar] = useState(false)
 
 	return (
@@ -51,7 +52,7 @@ function Navbar() {
 					{!showSearchbar && (
 						<>
 							<div className='hidden md:flex w-1/5  my-auto  py-3 '>
-								<ul className='w-full md:flex  justify-evenly py-1'>
+								<ul className='w-full md:flex  justify-between py-1 px-4'>
 									<li>
 										<button onClick={() => setShowSearchbar(true)}>
 											<IoIosSearch className='w-5 h-5' />
@@ -64,16 +65,26 @@ function Navbar() {
 											</a>
 										</Link>
 									</li>
-									<li
+									<li>
+										<button
+											className='hover:underline'
+											onClick={() => handleModal(<AuthPage />)}
+										>
+											Login|Register
+										</button>
+									</li>
+
+									{/* <li
 										onMouseEnter={() => setShowDropdown(true)}
 										onMouseLeave={() => setShowDropdown(false)}
 									>
+
 										<button className='flex relative'>
 											<AiOutlineUser className='w-5 h-5 ' />
 											<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
 										</button>
 										{showDropdown && <ProfileDropdown />}
-									</li>
+									</li> */}
 								</ul>
 							</div>
 							<div className='md:hidden flex items-center'>
