@@ -10,7 +10,7 @@ function Login({ handleClick }) {
 				className='bg-gray-100 absolute w-screen h-screen'
 				onClick={() => handleModal()}
 			></div>
-			<div className='relative w-1/3 h-[95%] 2xl:h-[85%] flex flex-col border-2 border-black bg-bg-gray-100 py-8 px-6'>
+			<div className='relative md:w-1/3 max:h-[95%] 2xl:h-[85%] flex flex-col border-2 border-black bg-bg-gray-100 py-8 px-6'>
 				<h1 className='bold text-4xl text-center'>Welcome Back</h1>
 				<h2 className='text-lg text-center my-1 text-slate-600'>
 					Please enter your account details

@@ -14,20 +14,20 @@ function Signup({ handleClick }) {
 	}
 
 	return (
-		<div className='w-screen h-screen mx-auto z-50 top-0 fixed flex justify-center items-center font-Vollkorn'>
+		<div className='w-screen h-screen mx-auto z-50 top-0 fixed flex justify-center items-center font-Vollkorn '>
 			<div
 				className='bg-gray-100 absolute w-screen h-screen'
 				onClick={() => handleModal()}
 			></div>
-			<div className='relative w-2/3 2xl:w-2/4 max-w-2/3  flex flex-col border-2 border-black bg-bg-gray-100 py-8 px-6'>
+			<div className='relative md:w-2/3 2xl:w-2/4 max-w-2/3 h-[80%] md:h[90%] flex flex-col border-2 border-black bg-bg-gray-100 py-8 px-6 overflow-y-scroll'>
 				<h1 className='bold text-4xl text-center'>Create Account</h1>
 				<h2 className='text-lg text-center my-1 text-slate-600'>
 					Please credentials for new account
 				</h2>
-				<form className='mt-2 px-7'>
+				<form className='mt-2 md:px-7'>
 					<div className='my-3'>
 						<h1 className='text-2xl font-semibold text-center'>I am </h1>
-						<div className='flex justify-evenly my-3'>
+						<div className='md:flex justify-evenly my-3'>
 							<div>
 								<input
 									id='remember'
@@ -65,7 +65,7 @@ function Signup({ handleClick }) {
 						</div>
 					</div>
 					<hr className='my-4'></hr>
-					<div className='flex justify-evenly'>
+					<div className='md:flex justify-evenly'>
 						<div className='mb-6'>
 							<label
 								htmlFor='fullname'
@@ -110,7 +110,7 @@ function Signup({ handleClick }) {
 						</div>
 					</div>
 					{isArtistBoxChecked && (
-						<div className='mx-4 mb-6'>
+						<div className='md:mx-4 mb-6'>
 							<label className='block  mb-2 text-lg  font-medium text-gray-900'>
 								Category
 							</label>
@@ -121,8 +121,8 @@ function Signup({ handleClick }) {
 							</select>
 						</div>
 					)}
-					<div className='flex justify-evenly w-full'>
-						<div className='mb-6 w-2/5'>
+					<div className='md:flex justify-evenly w-full'>
+						<div className='mb-6'>
 							<label
 								htmlFor='password'
 								className='block mb-2 text-lg font-medium text-gray-900 '
@@ -137,7 +137,7 @@ function Signup({ handleClick }) {
 								required
 							/>
 						</div>
-						<div className='mb-6 w-2/5'>
+						<div className='mb-6 md:w-2/5'>
 							<label
 								htmlFor='password'
 								className='block mb-2 text-lg font-medium text-gray-900 '
