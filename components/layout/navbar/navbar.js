@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { IoIosSearch } from 'react-icons/io'
-import { AiOutlineMenu } from 'react-icons/ai'
+import { AiOutlineMenu, AiOutlineUser, AiOutlineDown } from 'react-icons/ai'
 import { BsCart2 } from 'react-icons/bs'
 import Logo from 'public/assets/logo-cultured-kid.svg'
 import Portal from 'HOC/portal'
@@ -10,11 +10,18 @@ import SearchBar from './searchbar'
 import MobileNav from './mobilenav'
 import { ModalContext } from 'helpers/context/modal-context'
 import AuthPage from '../auth'
+import { userStore } from 'helpers/store'
+import ProfileDropdown from './profile-dropdown'
 
 function Navbar() {
 	const { handleModal } = useContext(ModalContext)
 	const [showPortal, setshowPortal] = useState(false)
+	const [showDropdown, setShowDropdown] = useState(false)
 	const [showSearchbar, setShowSearchbar] = useState(false)
+
+	const user = userStore((state) => state.user)
+	const userData = userStore((state) => state.userData)
+	console.log(userData)
 
 	return (
 		<>
@@ -65,26 +72,27 @@ function Navbar() {
 											</a>
 										</Link>
 									</li>
-									<li>
-										<button
-											className='hover:underline'
-											onClick={() => handleModal(<AuthPage />)}
+									{Object.keys(user).length === 0 ? (
+										<li>
+											<button
+												className='hover:underline'
+												onClick={() => handleModal(<AuthPage />)}
+											>
+												Login|Register
+											</button>
+										</li>
+									) : (
+										<li
+											onMouseEnter={() => setShowDropdown(true)}
+											onMouseLeave={() => setShowDropdown(false)}
 										>
-											Login|Register
-										</button>
-									</li>
-
-									{/* <li
-										onMouseEnter={() => setShowDropdown(true)}
-										onMouseLeave={() => setShowDropdown(false)}
-									>
-
-										<button className='flex relative'>
-											<AiOutlineUser className='w-5 h-5 ' />
-											<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
-										</button>
-										{showDropdown && <ProfileDropdown />}
-									</li> */}
+											<button className='flex relative'>
+												<AiOutlineUser className='w-5 h-5 ' />
+												<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
+											</button>
+											{showDropdown && <ProfileDropdown />}
+										</li>
+									)}
 								</ul>
 							</div>
 							<div className='md:hidden flex items-center'>

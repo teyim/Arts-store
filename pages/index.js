@@ -1,10 +1,14 @@
 import Image from 'next/image'
+import { useEffect } from 'react'
 import Drawing from '../public/assets/drawing.png'
 import Marquee from 'react-fast-marquee'
 import Header from 'components/layout/header'
 import Button from 'components/ui/button'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from 'helpers/firebase/clientApp'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from 'helpers/firebase/clientApp'
+import { userStore } from 'helpers/store'
 
 export default function Home({ artistList }) {
 	console.log(artistList)
@@ -17,34 +21,45 @@ export default function Home({ artistList }) {
 				'http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014',
 		},
 		{
-			name: 'Albert Martins',
+			name: 'Albert Martins 1',
 			category: 'Drawer',
 			address: 'New York',
 			imageUrl:
 				'https://cdn11.bigcommerce.com/s-x49po/products/5684/images/14277/52Figure40__50289.1506574078.500.659.JPG?c=2',
 		},
 		{
-			name: 'Mike Lambert',
+			name: 'Mike Lambert 4',
 			category: 'Painter',
 			address: 'Texas',
 			imageUrl:
 				'http://cdn.shopify.com/s/files/1/0017/9657/1249/products/Landscape-painting-of-tropical-waterfall-painting-on-canvas-by-Karen-Whitworth-Healing-Retreat.jpg?v=1612313935',
 		},
 		{
-			name: 'Albert Martins',
+			name: 'Albert Martins new',
 			category: 'Drawer',
 			address: 'New York',
 			imageUrl:
 				'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
 		},
 		{
-			name: 'Mike Lambert',
+			name: 'Mike Lambert adjad',
 			category: 'Painter',
 			address: 'Texas',
 			imageUrl:
 				'http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014',
 		},
 	]
+	const user = userStore((state) => state.user)
+	const userlogin = userStore((state) => state.login)
+
+	useEffect(() => {
+		onAuthStateChanged(auth, (userData) => {
+			if (userData) {
+				userlogin(userData)
+			}
+		})
+	}, [user])
+
 	return (
 		<>
 			<Header />

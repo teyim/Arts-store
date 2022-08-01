@@ -10,7 +10,7 @@ function Header() {
 			imageUrl:
 				'http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014',
 			name: 'Wallowing breeze',
-			artist: 'Hettie Richards',
+			artist: 'Hettie Richardsakjkjakd',
 			type: 'oil in canvas',
 			dimensions: '26in x 36in',
 			year: '2008',
@@ -19,7 +19,7 @@ function Header() {
 		{
 			imageUrl:
 				'https://cdn11.bigcommerce.com/s-x49po/products/5684/images/14277/52Figure40__50289.1506574078.500.659.JPG?c=2',
-			name: 'Wallowing breeze',
+			name: 'Wallowing bkakdjalkd',
 			artist: 'Hettie Richards',
 			type: 'oil in canvas',
 			dimensions: '26in x 36in',
@@ -29,7 +29,7 @@ function Header() {
 		{
 			imageUrl:
 				'https://www.creativeboom.com/uploads/articles/a4/a41200a5667f1051d5d8f508d4b15ae4393b7f7d_810.jpg',
-			name: 'Wallowing breeze',
+			name: 'Wallowing breezeakjkald',
 			artist: 'Hettie Richards',
 			type: 'oil in canvas',
 			dimensions: '26in x 36in',
@@ -39,7 +39,7 @@ function Header() {
 		{
 			imageUrl:
 				'http://cdn.shopify.com/s/files/1/0017/9657/1249/products/Landscape-painting-of-tropical-waterfall-painting-on-canvas-by-Karen-Whitworth-Healing-Retreat.jpg?v=1612313935',
-			name: 'Wallowing breeze',
+			name: 'Wallowing breezeakjjda',
 			artist: 'Hettie Richards',
 			type: 'oil in canvas',
 			dimensions: '26in x 36in',
@@ -49,7 +49,7 @@ function Header() {
 		{
 			imageUrl:
 				'http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014',
-			name: 'Wallowing breeze',
+			name: 'Wallowing breezehjahd',
 			artist: 'Hettie Richards',
 			type: 'oil in canvas',
 			dimensions: '26in x 36in',
