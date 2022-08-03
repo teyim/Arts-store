@@ -10,9 +10,11 @@ import { userStore } from 'helpers/store'
 
 function ProfileDropdown() {
 	const userlogout = userStore((state) => state.logout)
+	const setUserData = userStore((state) => state.setUserData)
 	const logout = () => {
 		signOut(auth)
 		userlogout()
+		setUserData({})
 	}
 
 	return (
