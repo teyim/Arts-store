@@ -20,9 +20,6 @@ function Navbar() {
 	const [showSearchbar, setShowSearchbar] = useState(false)
 
 	const user = userStore((state) => state.user)
-	const userData = userStore((state) => state.userData)
-	console.log(userData)
-
 	return (
 		<>
 			<nav className='p-6 font-Vollkorn  flex justify-center'>

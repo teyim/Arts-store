@@ -4,11 +4,11 @@ import Drawing from '../public/assets/drawing.png'
 import Marquee from 'react-fast-marquee'
 import Header from 'components/layout/header'
 import Button from 'components/ui/button'
-import { collection, getDocs } from 'firebase/firestore'
 import { db } from 'helpers/firebase/clientApp'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'helpers/firebase/clientApp'
 import { userStore } from 'helpers/store'
+import { getDoc, doc, collection, getDocs } from 'firebase/firestore'
 
 export default function Home({ artistList }) {
 	console.log(artistList)
@@ -51,11 +51,17 @@ export default function Home({ artistList }) {
 	]
 	const user = userStore((state) => state.user)
 	const userlogin = userStore((state) => state.login)
+	const setUserData = userStore((state) => state.setUserData)
 
 	useEffect(() => {
-		onAuthStateChanged(auth, (userData) => {
+		onAuthStateChanged(auth, async (userData) => {
 			if (userData) {
-				userlogin(userData)
+				//return firebase data
+				const userDocument = await getDoc(doc(db, 'users', userData?.uid))
+				if (userDocument.exists()) {
+					userlogin(userData)
+					setUserData(userDocument.data())
+				}
 			}
 		})
 	}, [user])
