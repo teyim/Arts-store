@@ -21,7 +21,7 @@ function ArtsPreview({ roomMockup, wideMockupView, closeUpMockupView }) {
 	const mockupStyles = {
 		default: ' w-[110px] h-[110px] md:w-[200px] md:h-[200px] my-auto',
 		wideMockupView: ' w-[60px] h-[60px] md:w-[150px] md:h-[150px] my-auto',
-		closeMockupview: ' w-[60px] h-[60px] md:w-[300px] md:h-[300px] my-auto',
+		closeMockupview: ' w-[200px] h-[200px] md:w-[300px] md:h-[300px] my-auto ',
 	}
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ function ArtsPreview({ roomMockup, wideMockupView, closeUpMockupView }) {
 
 	return (
 		<div className=' w-screen h-screen mx-auto z-50 top-0 fixed flex justify-center items-center bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 border border-gray-200'>
-			<div className='max-w-7xl h-4/5 w-4/5 drop-shadow-lg bg-green-200'>
+			<div className='max-w-7xl h-4/5 w-4/5 drop-shadow-lg'>
 				<button
 					className='z-20 absolute bg-black px-4 py-2'
 					onClick={() => handleModal()}

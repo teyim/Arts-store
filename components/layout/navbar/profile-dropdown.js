@@ -7,9 +7,16 @@ import {
 import { signOut } from 'firebase/auth'
 import { auth } from 'helpers/firebase/clientApp'
 
-function ProfileDropdown() {
+function ProfileDropdown({ screen, togglePortal }) {
 	const logout = () => {
 		signOut(auth)
+	}
+
+	const handleClick = (action) => {
+		logout()
+		if (action === 'logout' && screen === 'mobile') {
+			togglePortal()
+		}
 	}
 
 	return (
@@ -34,7 +41,7 @@ function ProfileDropdown() {
 					</li>
 					<li
 						className='flex px-5 hover:bg-gray-100  my-2 cursor-pointer'
-						onClick={logout}
+						onClick={() => handleClick('logout')}
 					>
 						<AiOutlineLogout className='w-5 h-5 text-stone-600 my-auto' />
 						<span className=' text-lg   text-stone-600 mt-2 mx-2'>Logout </span>
