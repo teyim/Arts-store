@@ -1,15 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Image from 'next/image'
-import { useEffect } from 'react'
 import Drawing from '../public/assets/drawing.png'
 import Marquee from 'react-fast-marquee'
 import Header from 'components/layout/header'
 import Button from 'components/ui/button'
 import { db } from 'helpers/firebase/clientApp'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'helpers/firebase/clientApp'
-import { userStore, authStore } from 'helpers/store'
-import { getDoc, doc, collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 
 export default function Home() {
 	const artists = [
@@ -49,25 +45,6 @@ export default function Home() {
 				'http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014',
 		},
 	]
-	const isUserAuth = authStore((state) => state.isUserAuth)
-	const setIsUserAuth = authStore((state) => state.setIsUserAuth)
-	const setUserData = userStore((state) => state.setUserData)
-
-	useEffect(() => {
-		onAuthStateChanged(auth, async (userData) => {
-			if (userData) {
-				//return firebase data
-				const userDocument = await getDoc(doc(db, 'users', userData?.uid))
-				if (userDocument.exists()) {
-					setIsUserAuth(true)
-					setUserData(userDocument.data())
-				}
-			} else {
-				setIsUserAuth(false)
-				setUserData({})
-			}
-		})
-	}, [isUserAuth])
 
 	return (
 		<>
