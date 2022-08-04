@@ -7,7 +7,7 @@ import {
 import { signOut } from 'firebase/auth'
 import { auth } from 'helpers/firebase/clientApp'
 
-function ProfileDropdown({ screen, togglePortal }) {
+function ProfileDropdown({ screen, togglePortal, toggleDropDown }) {
 	const logout = () => {
 		signOut(auth)
 	}
@@ -21,7 +21,10 @@ function ProfileDropdown({ screen, togglePortal }) {
 
 	return (
 		<>
-			<div className=' font-semibold mt-2 absolute bg-white  right-[5%] z-50 list-none divide-y divide-gray-100 rounded-sm shadow-md border border-gray-500 animate-fade-in-down'>
+			<div
+				className=' font-semibold mt-2 absolute bg-white  right-[5%] z-50 list-none divide-y divide-gray-100 rounded-sm shadow-md border border-gray-500 animate-fade-in-down'
+				onMouseLeave={toggleDropDown}
+			>
 				<ul className='w-[220px] text-center py-3'>
 					<li className='flex  px-5 hover:bg-gray-100 my-2 cursor-pointer'>
 						<AiOutlineUser className='w-5 h-5 text-stone-600 my-auto' />

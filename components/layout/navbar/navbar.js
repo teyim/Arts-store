@@ -58,7 +58,7 @@ function Navbar() {
 							<div className='hidden md:flex w-1/5  my-auto  py-3 '>
 								<ul className='w-full md:flex  justify-between py-1 px-4'>
 									<li>
-										<button onClick={() => setShowSearchbar(true)}>
+										<button onClick={() => setShowSearchbar(!showSearchbar)}>
 											<IoIosSearch className='w-5 h-5' />
 										</button>
 									</li>
@@ -79,15 +79,16 @@ function Navbar() {
 											</button>
 										</li>
 									) : (
-										<li
-											onMouseEnter={() => setShowDropdown(true)}
-											onMouseLeave={() => setShowDropdown(false)}
-										>
+										<li onClick={() => setShowDropdown(!showDropdown)}>
 											<button className='flex relative'>
-												<AiOutlineUser className='w-5 h-5 ' />
-												<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1' />
+												<AiOutlineUser className='w-5 h-5 inline' />
+												<AiOutlineDown className='w-4 h-3 my-auto text-gray-500 mt-1 inline' />
 											</button>
-											{showDropdown && <ProfileDropdown />}
+											{showDropdown && (
+												<ProfileDropdown
+													toggleDropDown={() => setShowDropdown(!showDropdown)}
+												/>
+											)}
 										</li>
 									)}
 								</ul>
