@@ -283,6 +283,7 @@ function Signup({ handleClick }) {
 					<button
 						className='font-semibold cursor-pointer'
 						onClick={() => handleClick()}
+						disabled={isLoading}
 					>
 						Login
 					</button>

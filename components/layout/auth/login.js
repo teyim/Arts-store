@@ -152,6 +152,7 @@ function Login({ handleClick }) {
 					<button
 						className='font-semibold cursor-pointer'
 						onClick={() => handleClick()}
+						disabled={isLoading}
 					>
 						Create account
 					</button>
