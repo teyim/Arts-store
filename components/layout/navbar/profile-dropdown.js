@@ -6,15 +6,10 @@ import {
 } from 'react-icons/ai'
 import { signOut } from 'firebase/auth'
 import { auth } from 'helpers/firebase/clientApp'
-import { userStore } from 'helpers/store'
 
 function ProfileDropdown() {
-	const userlogout = userStore((state) => state.logout)
-	const setUserData = userStore((state) => state.setUserData)
 	const logout = () => {
 		signOut(auth)
-		userlogout()
-		setUserData({})
 	}
 
 	return (

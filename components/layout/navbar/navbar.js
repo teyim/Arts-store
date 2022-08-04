@@ -10,7 +10,7 @@ import SearchBar from './searchbar'
 import MobileNav from './mobilenav'
 import { ModalContext } from 'helpers/context/modal-context'
 import AuthPage from '../auth'
-import { userStore } from 'helpers/store'
+import { authStore } from 'helpers/store'
 import ProfileDropdown from './profile-dropdown'
 
 function Navbar() {
@@ -19,7 +19,7 @@ function Navbar() {
 	const [showDropdown, setShowDropdown] = useState(false)
 	const [showSearchbar, setShowSearchbar] = useState(false)
 
-	const user = userStore((state) => state.user)
+	const isUserAuth = authStore((state) => state.isUserAuth)
 	return (
 		<>
 			<nav className='p-6 font-Vollkorn  flex justify-center'>
@@ -69,7 +69,7 @@ function Navbar() {
 											</a>
 										</Link>
 									</li>
-									{Object.keys(user).length === 0 ? (
+									{!isUserAuth ? (
 										<li>
 											<button
 												className='hover:underline'

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Image from 'next/image'
 import { useEffect } from 'react'
 import Drawing from '../public/assets/drawing.png'
@@ -7,11 +8,10 @@ import Button from 'components/ui/button'
 import { db } from 'helpers/firebase/clientApp'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'helpers/firebase/clientApp'
-import { userStore } from 'helpers/store'
+import { userStore, authStore } from 'helpers/store'
 import { getDoc, doc, collection, getDocs } from 'firebase/firestore'
 
-export default function Home({ artistList }) {
-	console.log(artistList)
+export default function Home() {
 	const artists = [
 		{
 			name: 'Mike Lambert',
@@ -49,8 +49,8 @@ export default function Home({ artistList }) {
 				'http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014',
 		},
 	]
-	const user = userStore((state) => state.user)
-	const userlogin = userStore((state) => state.login)
+	const isUserAuth = authStore((state) => state.isUserAuth)
+	const setIsUserAuth = authStore((state) => state.setIsUserAuth)
 	const setUserData = userStore((state) => state.setUserData)
 
 	useEffect(() => {
@@ -59,12 +59,15 @@ export default function Home({ artistList }) {
 				//return firebase data
 				const userDocument = await getDoc(doc(db, 'users', userData?.uid))
 				if (userDocument.exists()) {
-					userlogin(userData)
+					setIsUserAuth(true)
 					setUserData(userDocument.data())
 				}
+			} else {
+				setIsUserAuth(false)
+				setUserData({})
 			}
 		})
-	}, [user])
+	}, [isUserAuth])
 
 	return (
 		<>
