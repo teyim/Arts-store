@@ -7,7 +7,8 @@ import Button from 'components/ui/button'
 import { db } from 'helpers/firebase/clientApp'
 import { collection, getDocs } from 'firebase/firestore'
 
-export default function Home() {
+export default function Home({ arts }) {
+	console.log(arts)
 	const artists = [
 		{
 			name: 'Mike Lambert',
@@ -48,7 +49,7 @@ export default function Home() {
 
 	return (
 		<>
-			<Header />
+			<Header arts={artists} />
 			<div className=' py-10 font-Vollkorn bg-gray-100 '>
 				<div className='w-2/5 p-3 px-10  text-center'>
 					<h2 className='text-2xl text-gray-800'>Featured Artists</h2>
@@ -135,8 +136,10 @@ export default function Home() {
 export async function getStaticProps() {
 	const artistCol = collection(db, 'artists')
 	const artistSnapShot = await getDocs(artistCol)
-	const artistList = artistSnapShot.docs.map((doc) => doc.data())
+	const arts = artistSnapShot.docs.map((doc) => doc.data())
+	// const reponse = await fetch("https://62fa5e3affd7197707eb05e4.mockapi.io/art")
+	// const arts = await reponse.json()
 	return {
-		props: { artistList },
+		props: { arts },
 	}
 }

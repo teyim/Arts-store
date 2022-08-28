@@ -40,13 +40,13 @@ function Navbar() {
 						</Portal>
 					)}
 					<div className='hidden md:flex justify-evenly my-auto w-1/2 py-2 text-lg '>
-						<Link passHref href='/'>
+						<Link passHref href='/search/painting'>
 							Paintings
 						</Link>
-						<Link passHref href='/'>
+						<Link passHref href='/search/drawing'>
 							Drawings
 						</Link>
-						<Link passHref href='/'>
+						<Link passHref href='/search/sculpting'>
 							Sculptures
 						</Link>
 						<Link passHref href='/'>

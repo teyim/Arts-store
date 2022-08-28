@@ -1,5 +1,16 @@
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
+import { useRef } from 'react'
+import { useRouter } from 'next/router'
 function SearchBar({ setShowSearchbar, screen }) {
+	const router = useRouter()
+	const inputRef = useRef()
+
+	const handleSearch = () => {
+		if (inputRef.current.value !== '') {
+			router.push(`/search/all?query=${inputRef.current.value}`)
+		}
+	}
+
 	const mobileSearchBar = (
 		<div className='px-4 py-2 border border-white shadow-sm flex align-baseline justify-between animate-fade-in-down  mx-auto'>
 			<button className='p-1 my-auto' onClick={() => setShowSearchbar(false)}>
@@ -25,8 +36,9 @@ function SearchBar({ setShowSearchbar, screen }) {
 				type='text'
 				placeholder='Enter art name'
 				className='p-2 outline-none '
+				ref={inputRef}
 			/>
-			<button className='p-1 my-auto'>
+			<button className='p-1 my-auto' onClick={handleSearch}>
 				<AiOutlineSearch className='w-5 h-5 text-stone-500' />
 			</button>
 		</div>

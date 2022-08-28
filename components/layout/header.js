@@ -73,7 +73,7 @@ function Header() {
 						{paintings.map((painting) => (
 							<div
 								className='my-6 flex justify-evenly hover:shadow-xl hover:border hover:border-black'
-								key={painting.name}
+								key={painting.id}
 							>
 								<Link href='/arts/1' passHref>
 									<a>
@@ -90,7 +90,7 @@ function Header() {
 											<div className='my-3'>
 												<h3 className='font-bold text-lg '>{painting.name}</h3>
 												<h4 className='font-semibold text-gray-800'>
-													{painting.artist}
+													{painting.artistName}
 												</h4>
 												<h5 className='font-medium text-gray-600 italic'>
 													{painting.type}, {painting.year}
