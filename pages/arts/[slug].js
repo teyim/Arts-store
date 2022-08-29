@@ -3,15 +3,17 @@ import { useContext } from 'react'
 import { FiShare } from 'react-icons/fi'
 import { BsArrowLeftShort } from 'react-icons/bs'
 import Button from 'components/ui/button'
-import Link from 'next/link'
 import { ModalContext } from 'helpers/context/modal-context'
 import ArtsPreview from 'components/layout/arts-preview'
 import roomMockup1 from 'public/assets/rooms/room1.png'
 import roomMockup2 from 'public/assets/rooms/room2.jpg'
 import roomMockup3 from 'public/assets/rooms/room3.jpg'
+import { useRouter } from 'next/router'
 
 function SingleArt() {
+	const router = useRouter()
 	const { handleModal } = useContext(ModalContext)
+
 	return (
 		<>
 			<div className='md:flex font-Vollkorn '>
@@ -87,14 +89,12 @@ function SingleArt() {
 					</div>
 				</div>
 				<div className='py-10 px-10 md:px-20 md:w-1/2 text-center md:text-left '>
-					<Link href='/' passHref>
-						<a>
-							<span className='flex align-baseline'>
-								<BsArrowLeftShort className='w-7 h-7 my-auto' />
-								<span className='text-xl hover:underline'>Back</span>
-							</span>
-						</a>
-					</Link>
+					<button onClick={() => router.back()}>
+						<span className='flex align-baseline'>
+							<BsArrowLeftShort className='w-7 h-7 my-auto' />
+							<span className='text-xl hover:underline'>Back</span>
+						</span>
+					</button>
 					<div className='p-4 py-6 my-5 '>
 						<h1 className='text-4xl'>Wallowing Breeze</h1>
 						<h2 className='text-xl my-1 text-slate-600'>Charles Williams</h2>
