@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoIosSearch } from 'react-icons/io'
 import { AiOutlineMenu, AiOutlineUser, AiOutlineDown } from 'react-icons/ai'
-import { BsCart2 } from 'react-icons/bs'
+import { BsCart2, BsCartFill } from 'react-icons/bs'
 import Logo from 'public/assets/logo-cultured-kid.svg'
 import Portal from 'HOC/portal'
 import SearchBar from './searchbar'
@@ -12,12 +12,15 @@ import { ModalContext } from 'helpers/context/modal-context'
 import AuthPage from '../auth'
 import { authStore } from 'helpers/store'
 import ProfileDropdown from './profile-dropdown'
+import { useCart } from 'helpers/store'
 
 function Navbar() {
 	const { handleModal } = useContext(ModalContext)
 	const [showPortal, setshowPortal] = useState(false)
 	const [showDropdown, setShowDropdown] = useState(false)
 	const [showSearchbar, setShowSearchbar] = useState(false)
+
+	const cartItems = useCart((state) => state.cartItems)
 
 	const isUserAuth = authStore((state) => state.isUserAuth)
 	return (
@@ -65,7 +68,11 @@ function Navbar() {
 									<li>
 										<Link passHref href='/cart'>
 											<a>
-												<BsCart2 className='w-5 h-5' />
+												{cartItems.length >= 1 ? (
+													<BsCartFill className='w-5 h-5' />
+												) : (
+													<BsCart2 className='w-5 h-5' />
+												)}
 											</a>
 										</Link>
 									</li>

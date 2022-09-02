@@ -15,6 +15,7 @@ const nextConfig = {
 			'i.pinimg.com',
 			'media.istockphoto.com',
 			'mymodernmet.com',
+			'loremflickr.com',
 		],
 	},
 }
