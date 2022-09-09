@@ -4,11 +4,9 @@ import Drawing from '../public/assets/drawing.png'
 import Marquee from 'react-fast-marquee'
 import Header from 'components/layout/header'
 import Button from 'components/ui/button'
-import { db } from 'helpers/firebase/clientApp'
-import { collection, getDocs } from 'firebase/firestore'
 
-export default function Home({ arts }) {
-	console.log(arts)
+export default function Home() {
+	// console.log(arts)
 	const artists = [
 		{
 			name: 'Mike Lambert',
@@ -133,13 +131,13 @@ export default function Home({ arts }) {
 	)
 }
 
-export async function getStaticProps() {
-	const artistCol = collection(db, 'arts')
-	const artistSnapShot = await getDocs(artistCol)
-	const arts = artistSnapShot.docs.map((doc) => doc.data())
-	// const reponse = await fetch("https://62fa5e3affd7197707eb05e4.mockapi.io/art")
-	// const arts = await reponse.json()
-	return {
-		props: { arts },
-	}
-}
+// export async function getStaticProps() {
+// 	const artistCol = collection(db, 'arts')
+// 	const artistSnapShot = await getDocs(artistCol)
+// 	const arts = artistSnapShot.docs.map((doc) => doc.data())
+// 	// const reponse = await fetch("https://62fa5e3affd7197707eb05e4.mockapi.io/art")
+// 	// const arts = await reponse.json()
+// 	return {
+// 		props: { arts },
+// 	}
+// }
