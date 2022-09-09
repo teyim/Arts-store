@@ -4,7 +4,7 @@ import { AiOutlineUser, AiOutlineClose, AiOutlineDown } from 'react-icons/ai'
 import { BsCart2 } from 'react-icons/bs'
 import ProfileDropdown from './profile-dropdown'
 import SearchBar from './searchbar'
-import { authStore } from 'helpers/store'
+import { useAuthStore } from 'helpers/store'
 import { ModalContext } from 'helpers/context/modal-context'
 import AuthPage from '../auth'
 import { useRouter } from 'next/router'
@@ -16,7 +16,7 @@ function MobileNav({ showPortal, setshowPortal }) {
 
 	const router = useRouter()
 
-	const isUserAuth = authStore((state) => state.isUserAuth)
+	const isUserAuth = useAuthStore((state) => state.isUserAuth)
 
 	const handleMobileNavLinks = (category) => {
 		setshowPortal(!showPortal)

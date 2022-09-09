@@ -134,7 +134,7 @@ export default function Home({ arts }) {
 }
 
 export async function getStaticProps() {
-	const artistCol = collection(db, 'artists')
+	const artistCol = collection(db, 'arts')
 	const artistSnapShot = await getDocs(artistCol)
 	const arts = artistSnapShot.docs.map((doc) => doc.data())
 	// const reponse = await fetch("https://62fa5e3affd7197707eb05e4.mockapi.io/art")

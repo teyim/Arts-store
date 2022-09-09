@@ -25,6 +25,6 @@ authSlice = persist(authSlice, { name: 'user' })
 userSlice = devtools(userSlice)
 cartSlice = devtools(cartSlice)
 
-export const userStore = create(userSlice)
-export const authStore = create(authSlice)
+export const useStore = create(userSlice)
+export const useAuthStore = create(authSlice)
 export const useCart = create(cartSlice)

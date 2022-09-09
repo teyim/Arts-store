@@ -16,6 +16,8 @@
 	},
 	"dependencies": {
 		"firebase": "^9.8.1",
+		"flowbite": "^1.5.3",
+		"flowbite-react": "^0.1.10",
 		"formik": "^2.2.9",
 		"lint-staged": "^12.3.7",
 		"next": "^12.1.0",

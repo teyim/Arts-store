@@ -3,14 +3,14 @@ import { useContext, useState } from 'react'
 import { useFormik } from 'formik'
 import { login } from 'helpers/firebase/auth'
 import * as Yup from 'yup'
-import { userStore } from 'helpers/store'
+import { useStore } from 'helpers/store'
 
 function Login({ handleClick }) {
 	const { handleModal } = useContext(ModalContext)
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
-	const setUserData = userStore((state) => state.setUserData)
+	const setUserData = useStore((state) => state.setUserData)
 	const formik = useFormik({
 		initialValues: {
 			email: '',

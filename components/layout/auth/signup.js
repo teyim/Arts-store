@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { signup } from 'helpers/firebase/auth'
-import { userStore } from 'helpers/store'
+import { useStore } from 'helpers/store'
 
 function Signup({ handleClick }) {
 	const { handleModal } = useContext(ModalContext)
@@ -13,7 +13,7 @@ function Signup({ handleClick }) {
 	const [errorMessage, setErrorMessage] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
-	const setUserData = userStore((state) => state.setUserData)
+	const setUserData = useStore((state) => state.setUserData)
 
 	const handleCheckBoxClick = (userType) => {
 		if (userType === 'buyer') {

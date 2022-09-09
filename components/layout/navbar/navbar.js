@@ -10,7 +10,7 @@ import SearchBar from './searchbar'
 import MobileNav from './mobilenav'
 import { ModalContext } from 'helpers/context/modal-context'
 import AuthPage from '../auth'
-import { authStore } from 'helpers/store'
+import { useAuthStore } from 'helpers/store'
 import ProfileDropdown from './profile-dropdown'
 import { useCart } from 'helpers/store'
 
@@ -22,7 +22,7 @@ function Navbar() {
 
 	const cartItems = useCart((state) => state.cartItems)
 
-	const isUserAuth = authStore((state) => state.isUserAuth)
+	const isUserAuth = useAuthStore((state) => state.isUserAuth)
 	return (
 		<>
 			<nav className='p-6 font-Vollkorn  flex justify-center'>
