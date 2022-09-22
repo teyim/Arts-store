@@ -9,9 +9,12 @@ import roomMockup1 from 'public/assets/rooms/room1.png'
 import roomMockup2 from 'public/assets/rooms/room2.jpg'
 import roomMockup3 from 'public/assets/rooms/room3.jpg'
 import { useRouter } from 'next/router'
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore'
+import { db } from 'helpers/firebase/clientApp'
 
-function SingleArt() {
+function SingleArt({ artData }) {
 	const router = useRouter()
+
 	const { handleModal } = useContext(ModalContext)
 
 	return (
@@ -23,7 +26,11 @@ function SingleArt() {
 							className='p-1 shadow-lg hover:border-2 border-black'
 							onClick={() =>
 								handleModal(
-									<ArtsPreview roomMockup={roomMockup1} wideMockupView />
+									<ArtsPreview
+										roomMockup={roomMockup1}
+										wideMockupView
+										image={artData.photoUrl}
+									/>
 								)
 							}
 						>
@@ -39,7 +46,12 @@ function SingleArt() {
 						<button
 							className='p-1 shadow-lg hover:border-2 border-black'
 							onClick={() =>
-								handleModal(<ArtsPreview roomMockup={roomMockup2} />)
+								handleModal(
+									<ArtsPreview
+										roomMockup={roomMockup2}
+										image={artData.photoUrl}
+									/>
+								)
 							}
 						>
 							<div className='w-[50px] h-[50px] relative my-auto'>
@@ -55,7 +67,11 @@ function SingleArt() {
 							className='p-1 shadow-lg hover:border-2 border-black'
 							onClick={() =>
 								handleModal(
-									<ArtsPreview roomMockup={roomMockup3} closeUpMockupView />
+									<ArtsPreview
+										roomMockup={roomMockup3}
+										closeUpMockupView
+										image={artData.photoUrl}
+									/>
 								)
 							}
 						>
@@ -73,7 +89,7 @@ function SingleArt() {
 						<div className='p-1 drop-shadow-2xl mx-auto'>
 							<div className='w-[200px] h-[200px] md:w-[350px] md:h-[400px] relative my-auto'>
 								<Image
-									src='http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014'
+									src={artData.photoUrl}
 									alt='painting'
 									layout='fill'
 									objectFit='contain'
@@ -96,23 +112,26 @@ function SingleArt() {
 						</span>
 					</button>
 					<div className='p-4 py-6 my-5 '>
-						<h1 className='text-4xl'>Wallowing Breeze</h1>
-						<h2 className='text-xl my-1 text-slate-600'>Charles Williams</h2>
+						<h1 className='text-4xl'>{artData.name}</h1>
+						<h2 className='text-xl my-1 text-slate-600'>
+							{artData.artistName}
+						</h2>
 						<div className='text-md font-thin my-4 text-slate-600'>
-							<h5>Oil on canvas ,2008</h5>
-							<h5>26 in x 23 in</h5>
+							<h5>
+								{artData.category} ,{artData.year}
+							</h5>
+							<h5>
+								{artData.height} cm x {artData.width} cm
+							</h5>
 						</div>
 						<h5 className='text-md font-thin  text-slate-600 md:w-2/3'>
-							When an unknown printer took a galley of type and scrambled it to
-							make a type specimen book. It has survived not only five
-							centuries, but also the leap into electronic typesetting,
-							remaining essentially unchanged
+							{artData.artDetail}
 						</h5>
 						<hr className='md:w-2/3 my-4' />
-						<h1 className='text-2xl '>$ 620</h1>
+						<h1 className='text-2xl '>${artData.price}</h1>
 						<div className=' font-thin my-1 text-slate-600 text-sm'>
-							<h5>Ships from New York, USA</h5>
-							<h5>Estimated to ship in 3-7 days within USA</h5>
+							<h5>Ships from {artData.location}</h5>
+							<h5>Estimated to ship in 3-7 days </h5>
 						</div>
 						<Button customStyle='bg-black my-3 text-white w-full md:w-2/3 hover:bg-white hover:text-black text-lg'>
 							Add To Cart
@@ -125,6 +144,40 @@ function SingleArt() {
 			</div>
 		</>
 	)
+}
+
+export async function getStaticProps(context) {
+	const { params } = context
+	const { slug } = params
+	let data
+	const docRef = doc(db, 'arts', slug)
+	const docSnap = await getDoc(docRef)
+
+	if (docSnap.exists()) {
+		data = docSnap.data()
+	} else {
+		// doc.data() will be undefined in this case
+		console.log('No such document!')
+	}
+
+	return {
+		props: { artData: data },
+		revalidate: 600,
+	}
+}
+
+export async function getStaticPaths() {
+	let artSlugs = []
+	const artsCollection = collection(db, 'arts')
+	const artsSnapShot = await getDocs(artsCollection)
+	artsSnapShot.docs.forEach((doc) => {
+		artSlugs.push(doc.id)
+	})
+
+	return {
+		paths: artSlugs.map((slug) => ({ params: { slug } })),
+		fallback: false,
+	}
 }
 
 export default SingleArt
