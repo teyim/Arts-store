@@ -4,7 +4,7 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { ModalContext } from 'helpers/context/modal-context'
 import { useContext } from 'react'
 
-function ArtsPreview({ roomMockup, wideMockupView, closeUpMockupView }) {
+function ArtsPreview({ roomMockup, wideMockupView, closeUpMockupView, image }) {
 	const { handleModal } = useContext(ModalContext)
 	const [mockupImageStyle, setmockupImageStyle] = useState('')
 
@@ -52,7 +52,7 @@ function ArtsPreview({ roomMockup, wideMockupView, closeUpMockupView }) {
 				>
 					<div className={mockupImageStyle}>
 						<Image
-							src='http://i2.wp.com/zet.gallery/blog/wp-content/uploads/2016/02/Vicent-Van-Gogh-Starry-Night-Famous-Oil-Paintings-www.shairart.com_.jpg?fit=1280%2C1014'
+							src={image}
 							alt='painting'
 							layout='fill'
 							objectFit='contain'
