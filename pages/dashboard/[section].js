@@ -53,7 +53,7 @@ function Dashboard() {
 				</ul>
 			</div>
 
-			<div>
+			<div className='px-6 py-12'>
 				{section === 'profile' && <h1>My profile</h1>}
 				{section === 'saves' && <h1>saves and follows</h1>}
 				{section === 'orders' && <h1>Orders</h1>}

@@ -59,7 +59,7 @@ function CartUI() {
 									<div className='md:flex  w-2/3'>
 										<div className='w-[100px] h-[100px] relative my-auto '>
 											<Image
-												src={painting.imageUrl}
+												src={painting.photoUrl}
 												alt='painting'
 												className='drop-shadow-lg'
 												layout='fill'
