@@ -21,6 +21,13 @@ let cartSlice = (set) => ({
 		})),
 })
 
+let artSlice = (set) => ({
+	arts: [],
+	isLoading: false,
+	setIsLoading: (loadingState) => set({ isLoading: loadingState }),
+	setArts: (newArts) => set({ arts: newArts }),
+})
+
 authSlice = persist(authSlice, { name: 'user' })
 userSlice = devtools(userSlice)
 cartSlice = devtools(cartSlice)
@@ -28,3 +35,4 @@ cartSlice = devtools(cartSlice)
 export const useStore = create(userSlice)
 export const useAuthStore = create(authSlice)
 export const useCart = create(cartSlice)
+export const useArtsStore = create(artSlice)
