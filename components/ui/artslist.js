@@ -11,7 +11,7 @@ function ArtsList({ arts, addToCartHandler, imageSize, customStyle }) {
 		>
 			<div passHref>
 				<div className=' px-2 py-2 mx-3 '>
-					<div className={` ${imageSize} relative my-auto `}>
+					<div className={`${imageSize} relative my-auto `}>
 						<Image
 							priority
 							src={art.photoUrl}
@@ -24,24 +24,24 @@ function ArtsList({ arts, addToCartHandler, imageSize, customStyle }) {
 					<div className='my-3'>
 						<Link href={`/arts/${art.id}`} passHref>
 							<a>
-								<h3 className='font-bold text-lg hover:underline'>
+								<h3 className='font-bold text-xl hover:underline'>
 									{art.name}
 								</h3>
 							</a>
 						</Link>
 
-						<h4 className='font-semibold text-gray-800'>{art.artistName}</h4>
+						<h4 className='font-semibold text-gray-700'>{art.artistName}</h4>
 						<h5 className='font-medium text-gray-600 italic'>
 							{art.category}, {art.year}
 						</h5>
 						<h5 className='font-extralight text-gray-600 italic'>
-							{art.height}-{art.width}
+							{art.height}cm x {art.width}cm
 						</h5>
 					</div>
 					<div className='p-2 justify-between flex'>
 						<div className='my-auto'>
 							<h3 className='font-bold text-gray-600 my-auto '></h3>
-							{art.price}
+							{art.price}$
 						</div>
 						<div className='my-auto flex w-1/4 justify-between'>
 							<button className='p-1 bg-gray-200  w-7 h-7'>
